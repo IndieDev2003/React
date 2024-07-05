@@ -14,28 +14,33 @@ const RandomQuote = () => {
     }
 
     const random =()=>{
-        const select = quotes[Math.floor(Math.random()*quotes.length+1)];
+        const select = quotes[Math.floor(Math.random(0,7)*quotes.length)];
         setQuote(select)
     }
     const [quote,setQuote]= useState({
-        text:"Hello",
+        text:"Lets See What Will Happen With Your Words",
         author:"World"
     });
+
+    const Twitter = () => {
+        window.open(`https://x.com/intent/tweet?text=${quote.text}-${quote.author.split(',')[0]}`);
+
+    }
 
     //?Loading quotes from type fit
     loadQuote();
 
   return (
     <>
-        <div className="container">
+        <div className="container">``
             <div className="quote">{quote.text}</div>
             <div>
                 <div className="line"></div>
                 <div className="bottom">
-                    <div className="author">{quote.author}</div>
+                    <div className="author">- {quote.author.split(',')[0]}</div>
                     <div className="icons">
                         <i className="ri-restart-line" onClick={random}></i>
-                        <i className="ri-twitter-x-fill"></i>
+                        <i className="ri-twitter-x-fill" onClick={Twitter}></i>
                     </div>
                 </div>
             </div>
